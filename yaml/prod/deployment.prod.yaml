@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namespace-aplicacionGeneral-nombremicrofrontend-prod
+  namespace: namespace-aplicacionGeneral-nombremicrofrontend-prod
+  labels:
+    app: namespace-aplicacionGeneral-nombremicrofrontend-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: namespace-aplicacionGeneral-nombremicrofrontend-prod
+  template:
+    metadata:
+      labels:
+        app: namespace-aplicacionGeneral-nombremicrofrontend-prod
+    spec:
+      containers:
+      - name: namespace-aplicacionGeneral-nombremicrofrontend-prod
+        #image: ruta/dashboard.dockerhub:latest
+        image: registry.gitlab.com/ruta/container-registry:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: gitlab-registry-secret

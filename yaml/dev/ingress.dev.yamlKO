@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: namespace-aplicacionGeneral-nombremicrofrontend-ingress-dev
+  namespace: namespace-aplicacionGeneral-nombremicrofrontend-dev
+spec:
+  rules:
+    - host: dev-dashboard.dominio.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: namespace-aplicacionGeneral-nombremicrofrontend-service-dev
+                port:
+                  number: 80
